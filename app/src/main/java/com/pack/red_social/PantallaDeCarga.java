@@ -18,7 +18,7 @@ public class PantallaDeCarga extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(PantallaDeCarga.this, MainActivity.class);
+                Intent intent = new Intent(PantallaDeCarga.this, Inicio.class);
                 startActivity(intent);
             }
         },Duracion);

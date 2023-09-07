@@ -14,4 +14,7 @@
     <string name="CorreoLogin">Correo electrónico</string>
     <string name="ContraseniaLogin">Contraseña</string>
     <string name="INGRESAR">LOGIN</string>
+    <string name="Noinicio">No pudo iniciar sesión, intente nuevamente</string>
+    <string name="ok_no_inicio">ENTENDIDO</string>
+    <string name="CerrarSesion">CERRAR SESIÓN</string>
 </resources>
