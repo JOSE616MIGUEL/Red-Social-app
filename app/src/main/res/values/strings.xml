@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Red_social</string>
+    <string name="RegistrarBTN">Registrarme</string>
+    <string name="LoginBTN">Login</string>
+    <string name="RegistroTXT">REGISTRO</string>
+    <string name="Correo">Escriba Correo</string>
+    <string name="Contrasenia">Escriba Contraseña</string>
+    <string name="Nombres">Nombres Completos</string>
+    <string name="Apellidos">Apellidos Completos</string>
+    <string name="Edad">Edad</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Direccion">Direccion</string>
+    <string name="REGISTRARUSUARIO">REGISTRARME</string>
+    <string name="CorreoLogin">Correo electrónico</string>
+    <string name="ContraseniaLogin">Contraseña</string>
+    <string name="INGRESAR">LOGIN</string>
+</resources>
