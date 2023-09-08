@@ -17,4 +17,5 @@
     <string name="Noinicio">No pudo iniciar sesión, intente nuevamente</string>
     <string name="ok_no_inicio">ENTENDIDO</string>
     <string name="CerrarSesion">CERRAR SESIÓN</string>
+    <string name="INGRESARGOOGLE">INGRESAR CON GOOGLE</string>
 </resources>
