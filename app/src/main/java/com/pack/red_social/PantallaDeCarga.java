@@ -20,6 +20,7 @@ public class PantallaDeCarga extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(PantallaDeCarga.this, Inicio.class);
                 startActivity(intent);
+                finish();
             }
         },Duracion);
     }

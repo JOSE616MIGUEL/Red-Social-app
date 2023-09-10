@@ -13,17 +13,20 @@
         android:theme="@style/Theme.Red_social"
         tools:targetApi="31">
         <activity
+            android:name=".Opciones.Mis_Datos"
+            android:exported="false" />
+        <activity
             android:name=".Inicio"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Registro"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Login"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".PantallaDeCarga"
             android:exported="true">

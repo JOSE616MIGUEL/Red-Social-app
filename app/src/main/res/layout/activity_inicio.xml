@@ -28,7 +28,7 @@
                 android:id="@+id/foto_perfil"
                 android:layout_marginTop="50dp"
                 android:layout_marginStart="20dp"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 android:padding="3dp"
                 android:background="#2B4C5F"
                 android:layout_width="100dp"
@@ -68,9 +68,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
+                    android:id="@+id/correoPerfil"
                     android:text="@string/correoPerfil"
+                    android:textColor="#000"
                     android:layout_marginStart="5dp"
-                    android:background="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -96,45 +97,178 @@
                     android:layout_height="wrap_content"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:weightSum="2">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                <!--MIS DATOS-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_data_thresholding_24"/>
+                    <Button
+                        android:id="@+id/MisDatosOpcion"
+                        android:textColor="#fff"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/MisDatosOpcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN MIS DATOS-->
+
+                <!--CREAR POST-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_add_box_24"/>
+                    <Button
+                        android:id="@+id/CrearPublicacionOpcion"
+                        android:text="@string/CrearPublicacionOpcion"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN CREAR POST-->
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+                <!--PUBLICACIONES-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/baseline_post_add_24"
+                        android:layout_gravity="center"/>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+                    <Button
+                        android:id="@+id/PublicacionesOpcion"
+                        android:textColor="#fff"
+                        android:text="@string/PublicacionesOpcion"
+                        android:background="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN PUBLICACIONES-->
+
+                <!--USUARIOS-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/baseline_supervised_user_circle_24"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/UsuarioOpcion"
+                        android:text="@string/UusarioOpcion"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN USUARIOS-->
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <!--CHAT-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/baseline_chat_24"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/ChatOpcion"
+                        android:text="@string/ChatsOpcion"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN CHAT-->
+
+                <!--SALIR-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/baseline_exit_to_app_24"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/CerrarSesion"
+                        android:text="@string/CerrarSesion"
+                        android:layout_marginStart="5dp"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--FIN SALIR-->
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
