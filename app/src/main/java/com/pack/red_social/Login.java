@@ -1,6 +1,7 @@
 package com.pack.red_social;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,17 +15,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
 
     EditText CorreoLogin, ContraseniaLogin;
-    Button INGRESAR;
+    Button INGRESAR, INGRESARGOOGLE;
+
+    private GoogleSignInClient mGoogleSignClient;
+    private final static int RC_SIGN_IN = 123;
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -45,10 +60,13 @@ public class Login extends AppCompatActivity {
         CorreoLogin = findViewById(R.id.CorreoLogin);
         ContraseniaLogin = findViewById(R.id.ContraseniaLogin);
         INGRESAR = findViewById(R.id.INGRESAR);
+        INGRESARGOOGLE = findViewById(R.id.INGRESARGOOGLE);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(Login.this);
         dialog = new Dialog(Login.this);
+
+        crearSolicitud();
 
         INGRESAR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +85,91 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+        INGRESARGOOGLE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+    }
+
+    private void crearSolicitud() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignClient = GoogleSignIn.getClient(this,gso);
+    }
+
+    private void signIn(){
+        Intent signIntent = mGoogleSignClient.getSignInIntent();
+        startActivityForResult(signIntent, RC_SIGN_IN);
+    }
+
+
+    /*para crear está funcion excriba onA despues presion callsuper*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount cuenta = task.getResult(ApiException.class);
+                AutenticacionFirebase(cuenta);
+            }catch (ApiException e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void AutenticacionFirebase(GoogleSignInAccount cuenta) {
+        AuthCredential credencial = GoogleAuthProvider.getCredential(cuenta.getIdToken(), null);
+        firebaseAuth.signInWithCredential(credencial)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                            if (task.getResult().getAdditionalUserInfo().isNewUser()){
+                                String uid = user.getUid();
+                                String correo = user.getEmail();
+                                String nombre = user.getDisplayName();
+
+
+                                HashMap<Object,String> DatoUsuario = new HashMap<>();
+
+                                DatoUsuario.put("uid", uid);
+                                DatoUsuario.put("correo", correo);
+                                //DatoUsuario.put("pass", pass);
+                                DatoUsuario.put("nombres", nombre);
+                                //DatoUsuario.put("apellidos", apellidos);
+                                DatoUsuario.put("edad", "");
+                                DatoUsuario.put("telefono", "");
+                                DatoUsuario.put("direccion", "");
+
+                                DatoUsuario.put("imagen","");
+
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                                DatabaseReference reference = database.getReference("USUARIOS");
+
+                            }
+                            startActivity(new Intent(Login.this, Inicio.class));
+                        }
+                        else {
+                            Dialog_No_Inicio();
+                        }
+                    }
+                });
     }
 
     private void LOGINUSUARIO(String correo, String contrasenia) {
+        progressDialog.setTitle("Ingresando");
+        progressDialog.setMessage("Espere por favor");
         progressDialog.setCancelable(false);
         progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(correo, contrasenia)

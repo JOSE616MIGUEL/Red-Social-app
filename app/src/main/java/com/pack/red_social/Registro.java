@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -30,6 +31,8 @@ public class Registro extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,8 @@ public class Registro extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        progressDialog = new ProgressDialog(Registro.this);
+
         REGISTRARUSUARIO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +77,16 @@ public class Registro extends AppCompatActivity {
     }
 
     private void REGISTRAR(String correo, String pass) {
+        progressDialog.setTitle("Registrando");
+        progressDialog.setMessage("Espere por favor");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(correo, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            progressDialog.dismiss();
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
                             assert user != null;
@@ -107,17 +117,20 @@ public class Registro extends AppCompatActivity {
                             DatabaseReference reference = database.getReference("USUARIOS");
                             
                             reference.child(uid).setValue(DatoUsuario);
+
                             Toast.makeText(Registro.this, "Usuario registrado", Toast.LENGTH_SHORT).show();
 
                             startActivity(new Intent(Registro.this, Inicio.class));
 
                         }else {
+                            progressDialog.dismiss();
                             Toast.makeText(Registro.this, "Algo salio mal", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
                         Toast.makeText(Registro.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

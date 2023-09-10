@@ -16,6 +16,17 @@
     <string name="INGRESAR">LOGIN</string>
     <string name="Noinicio">No pudo iniciar sesión, intente nuevamente</string>
     <string name="ok_no_inicio">ENTENDIDO</string>
-    <string name="CerrarSesion">CERRAR SESIÓN</string>
     <string name="INGRESARGOOGLE">INGRESAR CON GOOGLE</string>
+    <string name="uidtxt">Uid:</string>
+    <string name="uidPerfil">---</string>
+    <string name="correotxt">Correo:</string>
+    <string name="correoPerfil">---</string>
+    <string name="nombrestxt">Nombres:</string>
+    <string name="nombresPerfil">---</string>
+    <string name="MisDatosOpcion">Mis Datos</string>
+    <string name="CrearPublicacionOpcion">Crear Post</string>
+    <string name="PublicacionesOpcion">Publicaciones</string>
+    <string name="UusarioOpcion">Usuarios</string>
+    <string name="ChatsOpcion">Chats</string>
+    <string name="CerrarSesion">CERRAR SESIÓN</string>
 </resources>
