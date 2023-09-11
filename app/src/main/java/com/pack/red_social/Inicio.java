@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.pack.red_social.Opciones.Mis_Datos;
 import com.squareup.picasso.Picasso;
 
 public class Inicio extends AppCompatActivity {
@@ -29,6 +30,8 @@ public class Inicio extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference BASE_DE_DATOS;
+
+    Button MisDatosOpcion, CrearPublicacionOpcion, PublicacionesOpcion, UsuarioOpcion, ChatsOpcion;
 
     ImageView foto_perfil;
     TextView uidPerfil, correoPerfil, nombrePerfil;
@@ -55,7 +58,22 @@ public class Inicio extends AppCompatActivity {
         correoPerfil = findViewById(R.id.correoPerfil);
         nombrePerfil = findViewById(R.id.nombresPerfil);
 
+        MisDatosOpcion = findViewById(R.id.MisDatosOpcion);
+        CrearPublicacionOpcion = findViewById(R.id.CrearPublicacionOpcion);
+        PublicacionesOpcion = findViewById(R.id.PublicacionesOpcion);
+        UsuarioOpcion = findViewById(R.id.UsuarioOpcion);
+        ChatsOpcion = findViewById(R.id.ChatOpcion);
+
         CerrarSesion = findViewById(R.id.CerrarSesion);
+
+        MisDatosOpcion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Inicio.this, Mis_Datos.class);
+                startActivity(intent);
+                Toast.makeText(Inicio.this, "Mis datos", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         CerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
