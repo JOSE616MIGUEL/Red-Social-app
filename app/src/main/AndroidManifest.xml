@@ -13,9 +13,13 @@
         android:theme="@style/Theme.Red_social"
         tools:targetApi="31">
         <activity
-            android:name=".Opciones.Mis_Datos"
+            android:name=".CambiarContrasenia.CambiarContrasenia"
             android:exported="false"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Opciones.Mis_Datos"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Inicio"
             android:exported="false"

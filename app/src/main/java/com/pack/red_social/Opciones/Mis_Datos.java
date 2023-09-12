@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pack.red_social.CambiarContrasenia.CambiarContrasenia;
 import com.pack.red_social.R;
 import com.squareup.picasso.Picasso;
 
@@ -61,6 +64,7 @@ public class Mis_Datos extends AppCompatActivity {
         TelefonoDato = findViewById(R.id.TelefonoDato);
         TelefonoDatoTXT = findViewById(R.id.TelefonoDatoTXT);
         Actualizar = findViewById(R.id.Actualizar);
+        ActualizarContrasenia = findViewById(R.id.ActualizarContrasenia);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -97,6 +101,13 @@ public class Mis_Datos extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        ActualizarContrasenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Mis_Datos.this, CambiarContrasenia.class));
             }
         });
     }

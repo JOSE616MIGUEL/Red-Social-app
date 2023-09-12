@@ -54,4 +54,13 @@
 
     <string name="fecha">--</string>
 
+    <string name="MisCredencialesTXT">Mis Credenciales</string>
+    <string name="CorreoActualTXT">Correo Actual: </string>
+    <string name="CorreoActual">--</string>
+    <string name="ContraseniaActualTXT">Contraseña Actual: </string>
+    <string name="ContraseniaActual">--</string>
+    <string name="ActualContraseniaET">Contraseñia Actual</string>
+    <string name="NuevaContraseniaET">Nueva contraseña</string>
+    <string name="CAMBIARCONTRASENIABTN">CAMBIAR CONTRASEÑA</string>
+    <string name="NotaTXT">Nota: Si cambia de contraseña, se procede a cerrar sesión automáticamente</string>
 </resources>
