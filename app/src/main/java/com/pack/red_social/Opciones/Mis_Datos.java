@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,7 +23,9 @@ import com.squareup.picasso.Picasso;
 public class Mis_Datos extends AppCompatActivity {
 
     ImageView ImagenDato;
-    TextView UidDato, NombresDatos, ApellidosDato, CorreoDato, ContraseniaDato, EdadDato, DireccionDato, TelefonoDato;
+    TextView UidDatoTXT, UidDato, NombresDatosTXT, NombresDatos, ApellidosDatoTXT, ApellidosDato,
+            CorreoDatoTXT, CorreoDato, ContraseniaDatoTXT, ContraseniaDato, EdadDatoTXT, EdadDato,
+            DireccionDatoTXT, DireccionDato, TelefonoDatoTXT, TelefonoDato;
     Button Actualizar, ActualizarContrasenia;
 
     FirebaseAuth firebaseAuth;
@@ -42,19 +45,30 @@ public class Mis_Datos extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         UidDato = findViewById(R.id.UidDato);
+        UidDatoTXT = findViewById(R.id.UidDatoTXT);
         NombresDatos = findViewById(R.id.NombresDato);
+        NombresDatosTXT = findViewById(R.id.NombresDatoXT);
         ApellidosDato = findViewById(R.id.ApellidosDato);
+        ApellidosDatoTXT = findViewById(R.id.ApellidosDatoTXT);
         CorreoDato = findViewById(R.id.CorreoDato);
+        CorreoDatoTXT = findViewById(R.id.CorreoDatoTXT);
         ContraseniaDato = findViewById(R.id.ContraseniaDato);
+        ContraseniaDatoTXT = findViewById(R.id.ContraseniaDatoTXT);
         EdadDato = findViewById(R.id.EdadDato);
+        EdadDatoTXT = findViewById(R.id.EdadDatoTXT);
         DireccionDato = findViewById(R.id.DireccionDato);
+        DireccionDatoTXT = findViewById(R.id.DireccionDatoTXT);
         TelefonoDato = findViewById(R.id.TelefonoDato);
+        TelefonoDatoTXT = findViewById(R.id.TelefonoDatoTXT);
         Actualizar = findViewById(R.id.Actualizar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
         BASE_DE_DATOS = FirebaseDatabase.getInstance().getReference("USUARIOS");
+
+        CambioLetra();
+
         BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,6 +99,20 @@ public class Mis_Datos extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void CambioLetra(){
+        String link = "Fuentes/static/Inconsolata-Black.ttf";
+        Typeface Tf = Typeface.createFromAsset(Mis_Datos.this.getAssets(), link);
+
+        UidDatoTXT.setTypeface(Tf);
+        NombresDatosTXT.setTypeface(Tf);
+        ApellidosDatoTXT.setTypeface(Tf);
+        CorreoDatoTXT.setTypeface(Tf);
+        ContraseniaDatoTXT.setTypeface(Tf);
+        DireccionDatoTXT.setTypeface(Tf);
+        EdadDatoTXT.setTypeface(Tf);
+        TelefonoDatoTXT.setTypeface(Tf);
     }
 
     @Override

@@ -46,6 +46,7 @@
                 android:id="@+id/UidDato"
                 android:text="@string/UidDato"
                 android:textSize="18sp"
+                android:layout_marginStart="5dp"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
@@ -64,12 +65,13 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/NombresDato"
                 android:text="@string/NombresDato"
+                android:layout_marginStart="5dp"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
@@ -89,7 +91,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -97,6 +99,7 @@
                 android:text="@string/ApellidosDato"
                 android:textSize="18sp"
                 android:textColor="#000"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -114,7 +117,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -122,8 +125,9 @@
                 android:text="@string/CorreoDato"
                 android:textSize="18sp"
                 android:textColor="#000"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -139,7 +143,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -147,8 +151,9 @@
                 android:text="@string/ContraseniaDato"
                 android:textSize="18sp"
                 android:textColor="#000"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -164,16 +169,17 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/EdadDato"
                 android:text="@string/EdadDato"
+                android:layout_marginStart="5dp"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -189,7 +195,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -197,8 +203,9 @@
                 android:text="@string/DireccionDato"
                 android:textSize="18sp"
                 android:textColor="#000"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -214,7 +221,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -222,8 +229,9 @@
                 android:text="@string/TelefonoDato"
                 android:textSize="18sp"
                 android:textColor="#000"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

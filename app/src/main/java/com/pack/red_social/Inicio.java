@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.pack.red_social.Opciones.Mis_Datos;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Inicio extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
@@ -34,6 +38,8 @@ public class Inicio extends AppCompatActivity {
     Button MisDatosOpcion, CrearPublicacionOpcion, PublicacionesOpcion, UsuarioOpcion, ChatsOpcion;
 
     ImageView foto_perfil;
+
+    TextView fecha;
     TextView uidPerfil, correoPerfil, nombrePerfil;
 
     Button CerrarSesion;
@@ -53,6 +59,7 @@ public class Inicio extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         BASE_DE_DATOS = firebaseDatabase.getReference("USUARIOS");
 
+        fecha = findViewById(R.id.fecha);
         foto_perfil = findViewById(R.id.foto_perfil);
         uidPerfil = findViewById(R.id.uidPerfil);
         correoPerfil = findViewById(R.id.correoPerfil);
@@ -65,6 +72,13 @@ public class Inicio extends AppCompatActivity {
         ChatsOpcion = findViewById(R.id.ChatOpcion);
 
         CerrarSesion = findViewById(R.id.CerrarSesion);
+
+        CambioLetra();
+
+        Date date = new Date();
+        SimpleDateFormat fechaC = new SimpleDateFormat("d'de'MMM'del'yyyy");
+        String sFecha = fechaC.format(date);
+        fecha.setText(sFecha);
 
         MisDatosOpcion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +128,22 @@ public class Inicio extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void CambioLetra(){
+        String link = "Fuentes/static/Inconsolata-Black.ttf";
+        Typeface Tf = Typeface.createFromAsset(Inicio.this.getAssets(), link);
+
+        fecha.setTypeface(Tf);
+        correoPerfil.setTypeface(Tf);
+        nombrePerfil.setTypeface(Tf);
+
+        MisDatosOpcion.setTypeface(Tf);
+        CrearPublicacionOpcion.setTypeface(Tf);
+        PublicacionesOpcion.setTypeface(Tf);
+        UsuarioOpcion.setTypeface(Tf);
+        ChatsOpcion.setTypeface(Tf);
+        CerrarSesion.setTypeface(Tf);
     }
 
     private void Cerrarsesion() {

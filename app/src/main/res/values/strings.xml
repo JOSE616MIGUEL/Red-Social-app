@@ -52,4 +52,6 @@
     <string name="ActualizarContrasenia">Actualizar Contraseña</string>
     <string name="CerrarSesion">Cerrar sesión</string>
 
+    <string name="fecha">--</string>
+
 </resources>
