@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pack.red_social.Opciones.Mis_Datos;
 
 import java.util.HashMap;
 
@@ -56,6 +58,8 @@ public class Registro extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(Registro.this);
+
+        CambioDeLetra();
 
         REGISTRARUSUARIO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +138,20 @@ public class Registro extends AppCompatActivity {
                         Toast.makeText(Registro.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void CambioDeLetra(){
+        String link = "Fuentes/static/Inconsolata-Black.ttf";
+        Typeface Tf = Typeface.createFromAsset(Registro.this.getAssets(), link);
+
+        Correo.setTypeface(Tf);
+        Contrasenia.setTypeface(Tf);
+        Nombres.setTypeface(Tf);
+        Apellidos.setTypeface(Tf);
+        Edad.setTypeface(Tf);
+        Telefono.setTypeface(Tf);
+        Direccion.setTypeface(Tf);
+        REGISTRARUSUARIO.setTypeface(Tf);
     }
 
     @Override

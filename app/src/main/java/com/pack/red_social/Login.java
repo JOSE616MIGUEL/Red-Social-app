@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,6 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pack.red_social.Opciones.Mis_Datos;
 
 import java.util.HashMap;
 
@@ -37,6 +40,8 @@ public class Login extends AppCompatActivity {
 
     EditText CorreoLogin, ContraseniaLogin;
     Button INGRESAR, INGRESARGOOGLE;
+
+    TextView app_name;
 
     private GoogleSignInClient mGoogleSignClient;
     private final static int RC_SIGN_IN = 123;
@@ -57,6 +62,7 @@ public class Login extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        app_name = findViewById(R.id.app_name);
         CorreoLogin = findViewById(R.id.CorreoLogin);
         ContraseniaLogin = findViewById(R.id.ContraseniaLogin);
         INGRESAR = findViewById(R.id.INGRESAR);
@@ -65,6 +71,8 @@ public class Login extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(Login.this);
         dialog = new Dialog(Login.this);
+
+        CambioDeLetra();
 
         crearSolicitud();
 
@@ -144,9 +152,9 @@ public class Login extends AppCompatActivity {
 
                                 DatoUsuario.put("uid", uid);
                                 DatoUsuario.put("correo", correo);
-                                //DatoUsuario.put("pass", pass);
+                                DatoUsuario.put("pass", "");
                                 DatoUsuario.put("nombres", nombre);
-                                //DatoUsuario.put("apellidos", apellidos);
+                                DatoUsuario.put("apellidos", "");
                                 DatoUsuario.put("edad", "");
                                 DatoUsuario.put("telefono", "");
                                 DatoUsuario.put("direccion", "");
@@ -196,6 +204,17 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void CambioDeLetra(){
+        String link = "Fuentes/static/Inconsolata-Black.ttf";
+        Typeface Tf = Typeface.createFromAsset(Login.this.getAssets(), link);
+
+        app_name.setTypeface(Tf);
+        CorreoLogin.setTypeface(Tf);
+        ContraseniaLogin.setTypeface(Tf);
+        INGRESAR.setTypeface(Tf);
+        INGRESARGOOGLE.setTypeface(Tf);
     }
 
     private void Dialog_No_Inicio(){
